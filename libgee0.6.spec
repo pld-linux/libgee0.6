@@ -4,12 +4,12 @@
 #
 Summary:	libgee - GObject collection library
 Summary(pl.UTF-8):	libgee - biblioteka kolekcji oparta na GObject
-Name:		libgee
+Name:		libgee0.6
 Version:	0.6.5
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libgee/0.6/libgee-%{version}.tar.xz
 # Source0-md5:	644ee7b9cadd47a9605359781c0d0b9d
 URL:		http://live.gnome.org/Libgee
 BuildRequires:	autoconf >= 2.50
@@ -23,6 +23,7 @@ BuildRequires:	xz
 # not required for stable releases (all generated files are included)
 #BuildRequires:	vala
 Requires:	glib2 >= 1:2.12.0
+Obsoletes:	libgee < 0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,6 +40,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgee
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.0
+Obsoletes:	libgee-devel < 0.7
 
 %description devel
 Header files for libgee library.
@@ -51,6 +53,7 @@ Summary:	Static libgee library
 Summary(pl.UTF-8):	Statyczna biblioteka libgee
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	libgee-static < 0.7
 
 %description static
 Static libgee library.
@@ -58,21 +61,22 @@ Static libgee library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libgee.
 
-%package -n vala-libgee
+%package -n vala-libgee0.6
 Summary:	libgee API for Vala language
 Summary(pl.UTF-8):	API libgee dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
+Obsoletes:	vala-libgee < 0.7
 
-%description -n vala-libgee
+%description -n vala-libgee0.6
 libgee API for Vala language.
 
-%description -n vala-libgee -l pl.UTF-8
+%description -n vala-libgee0.6 -l pl.UTF-8
 API libgee dla języka Vala.
 
 %prep
-%setup -q
+%setup -q -n libgee-%{version}
 
 %build
 %{__libtoolize}
@@ -119,6 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgee.a
 %endif
 
-%files -n vala-libgee
+%files -n vala-libgee0.6
 %defattr(644,root,root,755)
 %{_datadir}/vala/vapi/gee-1.0.vapi
