@@ -68,9 +68,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
 Obsoletes:	vala-libgee < 0.7
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libgee0.6
 libgee API for Vala language.
